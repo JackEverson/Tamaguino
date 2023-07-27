@@ -9,8 +9,8 @@
 
 #include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_GFX.h> // use GFX library 1.1.4
-#include <Adafruit_SSD1306.h> // use SSD1306 library 1.1.2
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
 
 #define OLED_RESET 4
 Adafruit_SSD1306 display(OLED_RESET);
@@ -410,10 +410,20 @@ int poops [3] = {
   0,0,0,
 };
 
+#define ACTIVATED LOW
+
 void setup() {
   pinMode(button1Pin, INPUT);
   pinMode(button2Pin, INPUT);
   pinMode(button3Pin, INPUT);
+
+  digitalWrite(button1Pin, HIGH);
+  digitalWrite(button2Pin, HIGH);
+  digitalWrite(button3Pin, HIGH);
+  // or just 
+  // pinMode(button1Pin, INPUT_PULLUP)
+  // etc
+  
   pinMode(sound, OUTPUT);
 
   pinMode(13,OUTPUT);
@@ -426,7 +436,7 @@ void setup() {
   // splash
   display.setTextColor(WHITE);
   //display.println(F("jakobdesign presents")); 
-  display.print(F(" jakobdesign presents")); 
+  display.print(F(" SUSHI!!!  ")); 
   display.drawBitmap(15, 24, splash1 , 48, 26, WHITE);
   display.drawBitmap(48, 24, splash2 , 80, 40, WHITE);
   display.display();
@@ -536,7 +546,7 @@ void loop() {
     /* ------- BUTTON PRESS ACTIONS ------- */
     
     /* ------- BUTTON 1 - MENU ------- */
-    if(button1State==HIGH){
+    if(button1State==ACTIVATED){
       
       // JUMP IN GAME
       if(game){
@@ -588,7 +598,7 @@ void loop() {
       
     }
     /* ------- BUTTON 2 - SELECT ------- */
-    if(button2State==HIGH){
+    if(button2State==ACTIVATED){
       
       if(game){
         if(!gameOver){
@@ -639,7 +649,7 @@ void loop() {
       
     }
     /* ------- BUTTON 3 - BACK ------- */
-    if(button3State==HIGH){
+    if(button3State==ACTIVATED){
       if(soundEnabled){
         tone(sound,1000,80);
       }

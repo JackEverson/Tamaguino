@@ -9,8 +9,8 @@
 
 #include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_GFX.h> // use GFX library 1.1.4
-#include <Adafruit_SSD1306.h> // use SSD1306 library 1.1.2
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
 
 #define OLED_RESET 4
 Adafruit_SSD1306 display(OLED_RESET);
@@ -26,7 +26,7 @@ int button2State = 0;
 int button3State = 0;
 
 
-
+/*
 // splash 48x26
 const unsigned char splash1 [] PROGMEM = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x39, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x39, 0xc0, 0x00, 
@@ -68,7 +68,7 @@ const unsigned char splash2 [] PROGMEM = {
 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc8, 0x00, 0x00, 0x00, 
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 };
-
+*/
 
 // front grass 32x10
 const unsigned char grass_front [] PROGMEM = {
@@ -422,7 +422,7 @@ void setup() {
 
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
-
+/*
   // splash
   display.setTextColor(WHITE);
   //display.println(F("jakobdesign presents")); 
@@ -443,7 +443,7 @@ void setup() {
 
   delay(2200);
   // end splash
-
+*/
   
   display.clearDisplay();
   
